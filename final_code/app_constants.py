@@ -1,0 +1,58 @@
+import re
+
+RETWEET_REGEX = "RT +@[^ :]+:?"
+RETWEET_REGEX_PATTERN = re.compile(RETWEET_REGEX, re.UNICODE | re.MULTILINE)
+
+
+DATA_FILE_2 = "./data/corona-out-2"
+DATA_FILE_3 = "./data/corona-out-3"
+
+# POSTGRESQL CONSTANTS
+PG_HOST = "localhost"
+PG_DATABASE = "twitter"
+PG_USERNAME = "postgres"
+PG_PASSWORD = "postgres"
+
+# MONGO CONSTANTS
+MONGO_CON_URL = "mongodb://root:root@localhost:27017"
+MONGO_DATABASE = "twitter"
+MONGO_COLLECTION = "tweets"
+MONGO_TWEET_SEARCH = '{"timestamp_ms": { "$gte": <<<gte>>> , "$lte": <<<lte>>>} ,"$text":{"$search": "<<<search>>>"}}'
+MONGO_HASHTAG_SEARCH = '{"timestamp_ms": { "$gte": <<<gte>>> , "$lte": <<<lte>>>} ,"$text":{"$search": "<<<search>>>"}}'
+MONGO_USER_TWEET_SEARCH = '{"user_screen_name": "<<<usn>>>"}'
+
+MONGO_SORT_TS = "timestamp_ms"
+MONGO_MAX_RESULTS = 25
+
+# CACHE EXPIRE DEFAULTS
+RC_EXPIRE_SIXTY_MINUTES = 3600 # in seconds
+RC_EXPIRE_FIVE_MINUTES = 300 # in seconds
+
+# TWEET CACHE CONSTANTS
+RC_MAX_TWEET_COUNT =  50
+RC_TWEET_LATEST = "RC_TWEET_LATEST"
+RC_RETWEET_LATEST = "RC_RETWEET_LATEST"
+
+# USER CACHE CONSTANTS
+RC_MAX_USER_COUNT =  500
+RC_MAX_USER_UI_COUNT =  25
+RC_USER_TWEET_COUNT = "RC_USER_TWEET_COUNT"
+RC_USER_RETWEET_COUNT = "RC_USER_RETWEET_COUNT"
+RC_USER_FOLLOWER_COUNT = "RC_USER_FOLLOWER_COUNT"
+RC_USER_FRIENDS_COUNT = "RC_USER_FRIENDS_COUNT"
+RC_USER_FAV_COUNT = "RC_USER_FAV_COUNT"
+RC_USER_STATUS_COUNT = "RC_USER_STATUS_COUNT"
+RC_USER_DD = "RC_USER_DD"
+
+# HASHTAG CACHE CONSTANTS
+RC_MAX_HASHTAG_COUNT =  1000
+RC_MAX_HASHTAG_UI_COUNT =  25
+RC_HASHTAG_TWEET =  "RC_HASHTAG_TWEET"
+
+# KAFKA PROPERTIES
+KAFKA_BROKERS = "127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094"
+KAFKA_TOPIC = "tweets"
+KAFKA_MIN_COMMIT_COUNT = 10
+KAFKA_MONGO_CONSUMER = "final-project-mongo-consumer"
+KAFKA_PGSQL_CONSUMER = "final-project-pgsql-consumer"
+KAFKA_REDIS_CONSUMER = "final-project-redis-consumer"

@@ -1,0 +1,1 @@
+# Run the scripts in the pgsql_ddl.sql file followed by the pgsql_dml.sql file.
